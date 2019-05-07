@@ -1,0 +1,129 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "accountName": {
+            "required": true,
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 24,
+            "pattern": "^[-\\w\\._]+$"
+        },
+        "certificateName": {
+            "required": true,
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 45,
+            "pattern": "^[\\w]+-[\\w]+$"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "A definition of an Azure resource.",
+                    "properties": {
+                        "etag": {
+                            "description": "The ETag of the resource, used for concurrency statements.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "id": {
+                            "description": "The ID of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The name of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "The type of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Contains information about a certificate.",
+            "properties": {
+                "properties": {
+                    "description": "The properties associated with the certificate.",
+                    "x-ms-client-flatten": true,
+                    "allOf": [
+                        {
+                            "properties": {
+                                "format": {
+                                    "description": "The format of the certificate - either Pfx or Cer. If omitted, the default is Pfx.",
+                                    "enum": [
+                                        "Pfx",
+                                        "Cer"
+                                    ],
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": false,
+                                        "name": "CertificateFormat",
+                                        "values": [
+                                            {
+                                                "description": "The certificate is a PFX (PKCS#12) formatted certificate or certificate chain.",
+                                                "value": "Pfx"
+                                            },
+                                            {
+                                                "description": "The certificate is a base64-encoded X.509 certificate.",
+                                                "value": "Cer"
+                                            }
+                                        ]
+                                    },
+                                    "nullable": false
+                                },
+                                "thumbprint": {
+                                    "description": "This must match the thumbprint from the name.",
+                                    "title": "The thumbprint of the certificate",
+                                    "type": "string"
+                                },
+                                "thumbprintAlgorithm": {
+                                    "description": "This must match the first portion of the certificate name. Currently required to be 'SHA1'.",
+                                    "title": "The algorithm of the certificate thumbprint",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    ],
+                    "properties": {
+                        "data": {
+                            "description": "The maximum size is 10KB.",
+                            "title": "The base64-encoded contents of the certificate.",
+                            "type": "string"
+                        },
+                        "password": {
+                            "description": "This is required if the certificate format is pfx and must be omitted if the certificate format is cer.",
+                            "title": "The password to access the certificate's private key.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "data"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "If_Match": {
+            "required": false,
+            "type": "string"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

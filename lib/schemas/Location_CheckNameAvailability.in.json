@@ -1,0 +1,49 @@
+{
+    "type": "object",
+    "properties": {
+        "locationName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Parameters for a check name availability request.",
+            "properties": {
+                "name": {
+                    "description": "The name to check for availability",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The resource type. Must be set to Microsoft.Batch/batchAccounts",
+                    "enum": [
+                        "Microsoft.Batch/batchAccounts"
+                    ],
+                    "type": "string",
+                    "x-ms-enum": {
+                        "modelAsString": false,
+                        "name": "Type",
+                        "values": [
+                            {
+                                "description": "The Batch account resource type.",
+                                "name": "BatchAccounts",
+                                "value": "Microsoft.Batch/batchAccounts"
+                            }
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "name",
+                "type"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

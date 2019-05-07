@@ -1,0 +1,56 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "accountName": {
+            "required": true,
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 24,
+            "pattern": "^[-\\w\\._]+$"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Parameters for updating an Azure Batch account.",
+            "properties": {
+                "properties": {
+                    "description": "The properties of the account.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "autoStorage": {
+                            "description": "The properties related to the auto-storage account.",
+                            "properties": {
+                                "storageAccountId": {
+                                    "description": "The resource ID of the storage account to be used for auto-storage account.",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "storageAccountId"
+                            ],
+                            "type": "object"
+                        }
+                    }
+                },
+                "tags": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The user-specified tags associated with the account.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

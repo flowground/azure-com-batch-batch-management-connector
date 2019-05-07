@@ -1,0 +1,84 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "accountName": {
+            "required": true,
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 24,
+            "pattern": "^[-\\w\\._]+$"
+        },
+        "applicationName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "A definition of an Azure resource.",
+                    "properties": {
+                        "etag": {
+                            "description": "The ETag of the resource, used for concurrency statements.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "id": {
+                            "description": "The ID of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The name of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "The type of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Contains information about an application in a Batch account.",
+            "properties": {
+                "properties": {
+                    "description": "The properties associated with the Application.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "allowUpdates": {
+                            "description": "A value indicating whether packages within the application may be overwritten using the same version string.",
+                            "type": "boolean"
+                        },
+                        "defaultVersion": {
+                            "description": "The package to use if a client requests the application but does not specify a version. This property can only be set to the name of an existing package.",
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "description": "The display name for the application.",
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

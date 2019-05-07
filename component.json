@@ -1,0 +1,644 @@
+{
+    "title": "BatchManagement",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/batch-BatchManagement/2018-12-01/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Operations_List": {
+            "main": "./lib/actions/Operations_List.js",
+            "title": "Lists available operations for the Microsoft.Batch provider",
+            "description": "Lists available operations for the Microsoft.Batch provider",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Operations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "BatchAccount_List": {
+            "main": "./lib/actions/BatchAccount_List.js",
+            "title": "Gets information about the Batch accounts associated with the subscription.",
+            "description": "Gets information about the Batch accounts associated with the subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/BatchAccount_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Location_CheckNameAvailability": {
+            "main": "./lib/actions/Location_CheckNameAvailability.js",
+            "title": "Checks whether the Batch account name is available in the specified region.",
+            "description": "Checks whether the Batch account name is available in the specified region.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Location_CheckNameAvailability.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Location_GetQuotas": {
+            "main": "./lib/actions/Location_GetQuotas.js",
+            "title": "Gets the Batch service quotas for the specified subscription at the given location.",
+            "description": "Gets the Batch service quotas for the specified subscription at the given location.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Location_GetQuotas.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "BatchAccount_ListByResourceGroup": {
+            "main": "./lib/actions/BatchAccount_ListByResourceGroup.js",
+            "title": "Gets information about the Batch accounts associated with the specified resource group.",
+            "description": "Gets information about the Batch accounts associated with the specified resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/BatchAccount_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "BatchAccount_Delete": {
+            "main": "./lib/actions/BatchAccount_Delete.js",
+            "title": "Deletes the specified Batch account.",
+            "description": "Deletes the specified Batch account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/BatchAccount_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "BatchAccount_Get": {
+            "main": "./lib/actions/BatchAccount_Get.js",
+            "title": "Gets information about the specified Batch account.",
+            "description": "Gets information about the specified Batch account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/BatchAccount_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "BatchAccount_Update": {
+            "main": "./lib/actions/BatchAccount_Update.js",
+            "title": "Updates the properties of an existing Batch account.",
+            "description": "Updates the properties of an existing Batch account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/BatchAccount_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "BatchAccount_Create": {
+            "main": "./lib/actions/BatchAccount_Create.js",
+            "title": "Creates a new Batch account with the specified parameters. Existing accounts cannot be updated with this API and should instead be updated with the Update Batch Account API.",
+            "description": "Creates a new Batch account with the specified parameters. Existing accounts cannot be updated with this API and should instead be updated with the Update Batch Account API.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/BatchAccount_Create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Application_List": {
+            "main": "./lib/actions/Application_List.js",
+            "title": "Lists all of the applications in the specified account.",
+            "description": "Lists all of the applications in the specified account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Application_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Application_Delete": {
+            "main": "./lib/actions/Application_Delete.js",
+            "title": "Deletes an application.",
+            "description": "Deletes an application.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Application_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Application_Get": {
+            "main": "./lib/actions/Application_Get.js",
+            "title": "Gets information about the specified application.",
+            "description": "Gets information about the specified application.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Application_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Application_Update": {
+            "main": "./lib/actions/Application_Update.js",
+            "title": "Updates settings for the specified application.",
+            "description": "Updates settings for the specified application.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Application_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Application_Create": {
+            "main": "./lib/actions/Application_Create.js",
+            "title": "Adds an application to the specified Batch account.",
+            "description": "Adds an application to the specified Batch account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Application_Create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApplicationPackage_List": {
+            "main": "./lib/actions/ApplicationPackage_List.js",
+            "title": "Lists all of the application packages in the specified application.",
+            "description": "Lists all of the application packages in the specified application.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApplicationPackage_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApplicationPackage_Delete": {
+            "main": "./lib/actions/ApplicationPackage_Delete.js",
+            "title": "Deletes an application package record and its associated binary file.",
+            "description": "Deletes an application package record and its associated binary file.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApplicationPackage_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApplicationPackage_Get": {
+            "main": "./lib/actions/ApplicationPackage_Get.js",
+            "title": "Gets information about the specified application package.",
+            "description": "Gets information about the specified application package.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApplicationPackage_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApplicationPackage_Create": {
+            "main": "./lib/actions/ApplicationPackage_Create.js",
+            "title": "Creates an application package record.",
+            "description": "Creates an application package record.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApplicationPackage_Create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ApplicationPackage_Activate": {
+            "main": "./lib/actions/ApplicationPackage_Activate.js",
+            "title": "Activates the specified application package.",
+            "description": "Activates the specified application package.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ApplicationPackage_Activate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Certificate_ListByBatchAccount": {
+            "main": "./lib/actions/Certificate_ListByBatchAccount.js",
+            "title": "Lists all of the certificates in the specified account.",
+            "description": "Lists all of the certificates in the specified account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Certificate_ListByBatchAccount.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Certificate_Delete": {
+            "main": "./lib/actions/Certificate_Delete.js",
+            "title": "Deletes the specified certificate.",
+            "description": "Deletes the specified certificate.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Certificate_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Certificate_Get": {
+            "main": "./lib/actions/Certificate_Get.js",
+            "title": "Gets information about the specified certificate.",
+            "description": "Gets information about the specified certificate.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Certificate_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Certificate_Update": {
+            "main": "./lib/actions/Certificate_Update.js",
+            "title": "Updates the properties of an existing certificate.",
+            "description": "Updates the properties of an existing certificate.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Certificate_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Certificate_Create": {
+            "main": "./lib/actions/Certificate_Create.js",
+            "title": "Creates a new certificate inside the specified account.",
+            "description": "Creates a new certificate inside the specified account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Certificate_Create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Certificate_CancelDeletion": {
+            "main": "./lib/actions/Certificate_CancelDeletion.js",
+            "title": "Cancels a failed deletion of a certificate from the specified account.",
+            "description": "If you try to delete a certificate that is being used by a pool or compute node, the status of the certificate changes to deleteFailed. If you decide that you want to continue using the certificate, you can use this operation to set the status of the certificate back to active. If you intend to delete the certificate, you do not need to run this operation after the deletion failed. You must make sure that the certificate is not being used by any resources, and then you can try again to delete the certificate.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Certificate_CancelDeletion.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "BatchAccount_GetKeys": {
+            "main": "./lib/actions/BatchAccount_GetKeys.js",
+            "title": "Gets the account keys for the specified Batch account.",
+            "description": "This operation applies only to Batch accounts created with a poolAllocationMode of 'BatchService'. If the Batch account was created with a poolAllocationMode of 'UserSubscription', clients cannot use access to keys to authenticate, and must use Azure Active Directory instead. In this case, getting the keys will fail.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/BatchAccount_GetKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Pool_ListByBatchAccount": {
+            "main": "./lib/actions/Pool_ListByBatchAccount.js",
+            "title": "Lists all of the pools in the specified account.",
+            "description": "Lists all of the pools in the specified account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Pool_ListByBatchAccount.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Pool_Delete": {
+            "main": "./lib/actions/Pool_Delete.js",
+            "title": "Deletes the specified pool.",
+            "description": "Deletes the specified pool.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Pool_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Pool_Get": {
+            "main": "./lib/actions/Pool_Get.js",
+            "title": "Gets information about the specified pool.",
+            "description": "Gets information about the specified pool.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Pool_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Pool_Update": {
+            "main": "./lib/actions/Pool_Update.js",
+            "title": "Updates the properties of an existing pool.",
+            "description": "Updates the properties of an existing pool.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Pool_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Pool_Create": {
+            "main": "./lib/actions/Pool_Create.js",
+            "title": "Creates a new pool inside the specified account.",
+            "description": "Creates a new pool inside the specified account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Pool_Create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Pool_DisableAutoScale": {
+            "main": "./lib/actions/Pool_DisableAutoScale.js",
+            "title": "Disables automatic scaling for a pool.",
+            "description": "Disables automatic scaling for a pool.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Pool_DisableAutoScale.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Pool_StopResize": {
+            "main": "./lib/actions/Pool_StopResize.js",
+            "title": "Stops an ongoing resize operation on the pool.",
+            "description": "This does not restore the pool to its previous state before the resize operation: it only stops any further changes being made, and the pool maintains its current state. After stopping, the pool stabilizes at the number of nodes it was at when the stop operation was done. During the stop operation, the pool allocation state changes first to stopping and then to steady. A resize operation need not be an explicit resize pool request; this API can also be used to halt the initial sizing of the pool when it is created.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Pool_StopResize.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "BatchAccount_RegenerateKey": {
+            "main": "./lib/actions/BatchAccount_RegenerateKey.js",
+            "title": "Regenerates the specified account key for the Batch account.",
+            "description": "Regenerates the specified account key for the Batch account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/BatchAccount_RegenerateKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "BatchAccount_SynchronizeAutoStorageKeys": {
+            "main": "./lib/actions/BatchAccount_SynchronizeAutoStorageKeys.js",
+            "title": "Synchronizes access keys for the auto-storage account configured for the specified Batch account.",
+            "description": "Synchronizes access keys for the auto-storage account configured for the specified Batch account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/BatchAccount_SynchronizeAutoStorageKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

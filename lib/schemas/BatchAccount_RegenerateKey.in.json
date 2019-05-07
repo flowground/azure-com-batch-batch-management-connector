@@ -1,0 +1,55 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "accountName": {
+            "required": true,
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 24,
+            "pattern": "^[-\\w\\._]+$"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Parameters supplied to the RegenerateKey operation.",
+            "properties": {
+                "keyName": {
+                    "description": "The type of account key to regenerate.",
+                    "enum": [
+                        "Primary",
+                        "Secondary"
+                    ],
+                    "type": "string",
+                    "x-ms-enum": {
+                        "modelAsString": false,
+                        "name": "AccountKeyType",
+                        "values": [
+                            {
+                                "description": "The primary account key.",
+                                "value": "Primary"
+                            },
+                            {
+                                "description": "The secondary account key.",
+                                "value": "Secondary"
+                            }
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "keyName"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "accountName": {
+            "required": true,
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 24,
+            "pattern": "^[-\\w\\._]+$"
+        },
+        "applicationName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "versionName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[a-zA-Z0-9_-][a-zA-Z0-9_.-]*$"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Parameters for an activating an application package.",
+            "properties": {
+                "format": {
+                    "description": "The format of the application package binary file.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "format"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

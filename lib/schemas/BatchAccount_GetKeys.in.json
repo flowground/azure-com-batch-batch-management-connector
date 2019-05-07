@@ -1,0 +1,24 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "accountName": {
+            "required": true,
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 24,
+            "pattern": "^[-\\w\\._]+$"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

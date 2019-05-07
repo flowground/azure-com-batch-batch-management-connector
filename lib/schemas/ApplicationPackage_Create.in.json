@@ -1,0 +1,124 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "accountName": {
+            "required": true,
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 24,
+            "pattern": "^[-\\w\\._]+$"
+        },
+        "applicationName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "versionName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[a-zA-Z0-9_-][a-zA-Z0-9_.-]*$"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "A definition of an Azure resource.",
+                    "properties": {
+                        "etag": {
+                            "description": "The ETag of the resource, used for concurrency statements.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "id": {
+                            "description": "The ID of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The name of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "The type of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "An application package which represents a particular version of an application.",
+            "properties": {
+                "properties": {
+                    "description": "The properties associated with the Application Package.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "format": {
+                            "description": "The format of the application package, if the package is active.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "lastActivationTime": {
+                            "description": "The time at which the package was last activated, if the package is active.",
+                            "format": "date-time",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "state": {
+                            "description": "The current state of the application package.",
+                            "enum": [
+                                "Pending",
+                                "Active"
+                            ],
+                            "readOnly": true,
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": false,
+                                "name": "PackageState",
+                                "values": [
+                                    {
+                                        "description": "The application package has been created but has not yet been activated.",
+                                        "value": "Pending"
+                                    },
+                                    {
+                                        "description": "The application package is ready for use.",
+                                        "value": "Active"
+                                    }
+                                ]
+                            }
+                        },
+                        "storageUrl": {
+                            "description": "The URL for the application package in Azure Storage.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "storageUrlExpiry": {
+                            "description": "The UTC time at which the Azure Storage URL will expire.",
+                            "format": "date-time",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
